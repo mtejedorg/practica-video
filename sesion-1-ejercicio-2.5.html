@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var lowSrc="videos/sintel_trailer-320p.webm";
+        var medSrc="videos/sintel_trailer-480p.webm"
+        var hiSrc="videos/sintel_trailer-720p.webm";
+    
+        function setLow(){
+            switchVideo (_video, lowSrc);
+        }
+        
+        function setMed(){
+            switchVideo (_video, medSrc);
+        }
+        
+        function setHi() {
+            switchVideo (_video, hiSrc);
+        }
+        
+        function switchVideo(vElement , newUrl) {
+            vElement.lastPosition = vElement.currentTime;
+            vElement.src = newUrl;
+        }
+        function playVideo (videoElement) {
+            videoElement.currentTime = videoElement.lastPosition;
+            videoElement.play();    
+        }
+    </script>
+</head>
+<body>
+    <!--
+    EJERCICIO 1: Descargar el recurso identificado por el siguiente URL
+        http://download.blender.org/durian/trailer/sintel_trailer-720p.mp4    
+
+     EJERCICIO 2: Generar 3 versiones webm del v’deo anterior a 320p, 480p y 720p
+    
+        ffmpeg -i sintel_trailer-720p.mp4 -vf scale=320:-1 sintel_trailer-320p.webm 
+        ffmpeg -i sintel_trailer-720p.mp4 -vf scale=480:-1 sintel_trailer-480p.webm
+        ffmpeg -i sintel_trailer-720p.mp4 -vf scale=720:-1 sintel_trailer-720p.webm
+    
+    EJERCICIO 3: Usando Javascript conseguir que al cargar el documento se
+    inicie la reproducci—n del v’deo con menor resoluci—n. El cuadro del v’deo
+    debe tener una altura de 600 puntos
+    
+    EJERCICIO 4: Al pulsar los botones: low, medium y high iniciar la reproducci—n
+    del contenido a 360p, 480p y 720p respectivamente. El cuadro de reproducci—n
+    debe permanecer siempre del mismo tama–o
+    
+    EJERCICIO 5: Mantener la posici—n de reproducci—n al realizar la conmutaci—n
+    
+    EJERCICIO 6: Determinar con la mayor certeza posible si el contenido ser‡ soportado
+    por el navegador antes de intentar la reproducci—n. Informar al usuario y no
+    proceder a la conmutaci—n
+   
+    EJERCICIO 7: Implementar una transici—n suave al cambiar de resoluci—n, evitando
+    la presentaci—n de frames que no correspondan con el momento correcto de reproducci—n
+    -->
+    
+    <video id="miVideo" onloadedmetadata="playVideo(this)" controls preload='metadata' ></video>
+    <br>
+    <button onclick="setLow()">low</button>
+    <button onclick="setMed()">medium</button>
+    <button onclick="setHi()">high</button>
+    
+    <script>
+        var _video = document.getElementById("miVideo");
+        _video.height="600";
+        _video.src = "videos/sintel_trailer-320p.webm";
+        _video.lastPosition=0;
+    </script>
+</body>
+</html>

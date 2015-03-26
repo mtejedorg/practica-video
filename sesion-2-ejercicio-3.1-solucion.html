@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function playvideo(){
+            var myVideo = document.getElementById("myVideo");
+            myVideo.play();
+        }
+        
+        function pausevideo(){
+            var myVideo = document.getElementById("myVideo");
+            myVideo.pause();
+        }
+        
+        function muteaudio(){
+            var myVideo = document.getElementById("myVideo");
+            if (myVideo.muted==true) {
+                myVideo.muted = false;
+            } else {
+                myVideo.muted = true;
+            }
+        }
+        
+        function volumeup() {
+            var myVideo = document.getElementById("myVideo");
+            myVideo.volume += 0.1;
+        }
+        
+        function volumedown() {
+            var myVideo = document.getElementById("myVideo");
+            myVideo.volume -= 0.1;
+        }       
+    </script>
+</head>
+<body>
+    <video id="myVideo" style="border:solid" autoplay>
+        <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+    </video>
+    <p>
+    <button onclick="playvideo()">play</button>
+    <button onclick="pausevideo()">pause</button>
+    <button onclick="muteaudio()">mute</button>
+    <button onclick="volumeup()">+</button>
+    <span>0</span>
+    <button onclick="volumedown()">-</button>
+    
+    <!--
+        EJERCICIO 1: Conectar los botones anteriores al API JS del elemento "myVideo"
+            * play: Reproducir el contenido de "myVideo"
+            * pausar: Pausar la reproducci—n de contenido
+            * mute: Cambiar el estado del altavoz: activado/desactivado
+            * + : Incrementar el volumen en 0.1
+            * - : Decrementar el volumen en 0.1
+    
+    -->
+</body>
+</html>

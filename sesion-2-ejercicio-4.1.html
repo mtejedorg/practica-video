@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function rwvideo() {
+            var myVideo = document.getElementById("myVideo");
+            myVideo.playbackRate--;
+        }
+        
+        function fwvideo() {
+            var myVideo = document.getElementById("myVideo");
+            myVideo.playbackRate++;
+        }
+    </script>
+</head>
+<body>
+    <video id="myVideo" style="border:solid" autoplay>
+        <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+    </video>
+    <p>
+    <button onclick="rwvideo()">RW</button>
+    <button onclick="fwvideo()">FW</button>
+    
+    <!--
+    EJERCICIO 1: Implementar un mecanismo de FF y RW del contenido reproducido
+    por myVideo y asociarlo al pulsado del rat—n. Cada vez que se pulsa FW se
+    incrementa el playrate en 1. Cada vez que se pulsa RW se decrementa el
+    playrate en 1. Usar el API JS del elemento de video
+    
+    EJERICIO 2: Implementar las operaciones FF y RW usando un SEEK temporizado
+
+    -->
+</body>
+</html>

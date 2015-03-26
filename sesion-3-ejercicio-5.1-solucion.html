@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function checkTime() {
+                subtitle.innerHTML=myVideo.currentTime;
+            }
+        </script>
+    </head>
+    <body>
+        <video id="myVideo" controls style="width:800px" ontimeupdate="checkTime()">
+            <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+        </video>
+        <p id="subtitle"></p>
+
+        <!--
+        CUE: a thing said or done that serves as a signal to an actor or
+        other performer to enter or to begin their speech or performance
+        
+        En el contexto de video son marcas que permiten realizar acciones,
+        como el cambio de un subtitulo
+        
+        EJERCICIO 1: Establecer un mecanismo basado en javascript que
+        permita motirizar la posicion de reproduccion de un elemento video.
+        Imprimir el valor de la propiedad currentTime dentro del elemento subtitle
+        
+        EJERCICIO 2: Implementar un mecanismo de disparo de eventos
+        asociado a marcas de tiempo (CUE) del video reproducido. Imprimir
+        el valor de la marca cuando la reproduccion sobrepase dicho punto
+        
+        EJERCICIO 3: Reemplazar el valor de la marca por un texto (subtitulo)
+        
+        EJERICIO 4: Ajustar los estilos para integrar el parrafo dentro del
+        componente de video
+        -->
+    </body>
+</html>

@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+        var playRate = 1;
+        var rateInterval = null;
+        var salto = 40;
+
+        //Con esta función reseteamos el rate Interval de un "click" al siguiente"
+        function clearRate () {
+            if( rateInterval != null) {
+                window.clearInterval(rateInterval);
+                rateInterval = null;
+            }
+        }
+
+        function rw() {
+            clearRate()
+            var myVideo = document.getElementById("myVideo");
+            playRate--; //Como es rw ralentizamos el playRate actual
+            seek(myVideo);
+        }
+        
+        function fw() {
+            clearRate()
+            var myVideo = document.getElementById("myVideo");
+            playRate++; //Como es fw aceleramos el playRate actual
+            seek(myVideo);
+        }
+
+        // Por cada segundo "real" pasan 5 en el vídeo, por tanto pasarán 40*5
+        function seek(myVideo) {
+            myVideo.play();
+            if (playRate == 0) {
+                myVideo.pause();
+                return;
+            } else if (playRate != 1) { //Si es uno ya estará en play
+                rateInterval = setInterval(
+                    function() {
+                        myVideo.currentTime += salto*playRate/1000;
+                    }, salto); //Con esto implementamos el seek, la llamamos cada 40 ms
+                return;
+            }
+        }
+
+    </script>
 </head>
 <body>
     <video id="myVideo" style="border:solid" autoplay>
         <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
     </video>
     <p>
-    <button>RW</button>
-    <button>FW</button>
+    <button onclick="rw()">RW</button>
+    <button onclick="fw()">FW</button>
     
     <!--
     EJERCICIO 1: Implementar un mecanismo de FF y RW del contenido reproducido
